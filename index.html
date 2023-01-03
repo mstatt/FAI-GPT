@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<meta name="copyright" content="Falcons.AI 2023">
+<meta name="Distribution" content="Global">
+<meta name="Rating" content="General">
+<meta name="mobile-web-app-capable" content="yes">
+<meta http-equiv="cache-control" content="max-age=604800">
+<meta http-equiv="cache-control" content="Public">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <title>Falcons.ai ChatGPT</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<meta name="theme-color" content="#712cf9">
+<script src="js/jquery.js"></script>
+<script>
+// A $( document ).ready() block.
+$( document ).ready(function() {
+//Start of Document.Ready
+
+
+// Click the Button to post message and request response.
+  $( "#btnSend" ).click(function() {
+    ReadyToProcess();
+  });
+
+// Send message if Enter Key is pressed
+$('#userquery').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13'){
+    ReadyToProcess();
+  }
+
+});
+// End of Document.Ready 
+});
+
+
+
+function ReadyToProcess(){
+  //Process the user input , Display in Message window and send request to API
+    var message = $( "#userquery" ).val();
+    user = "Human User";
+    $( "#userquery" ).val("");
+    addMessage( message, user );
+    //Trigger typing div to apprear
+    LookType();
+    //Send request to API
+    sendRequest(message);
+
+}
+
+
+
+
+
+function addMessage( message, user ) {
+  // Creat Message bubble to render in window appended to the bottom,
+      bubble = "<div class='speechbubble'><p>"+message+"<span class='username'>"+user+"</span></p></div>";
+      //Update the message list
+    $( ".wrapper" ).append(bubble);
+    //Scroll to show latest message
+    $('#messagelist').scrollTop($('#messagelist')[0].scrollHeight);
+
+}
+
+function LookType(){
+bubble = "<div class='speechbubble' id='TypeThought'><div class='typing'><div class='dot'></div><div class='dot'></div><div class='dot'></div><div class='dot'></div></div></div>";
+      //Update the message list
+    $( ".wrapper" ).append(bubble);
+
+}
+
+
+function sendRequest(message){
+
+  // Send Request
+const request = new XMLHttpRequest();
+request.open('POST', 'https://api.openai.com/v1/completions');
+request.setRequestHeader('Content-Type', 'application/json');
+request.setRequestHeader('Authorization', 'Bearer <YOUR API KEY>');
+
+const data = { 
+      "model": "text-davinci-003",
+      "prompt": message,
+      "temperature": 0, // Higher values means the model will take more risks.
+      "max_tokens": 3000, // The maximum number of tokens to generate in the completion. Most models have a context length of 2048 tokens (except for the newest models, which support 4096).
+      "top_p": 1, // alternative to sampling with temperature, called nucleus sampling
+      "frequency_penalty": 0.5, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
+      "presence_penalty": 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
+
+};
+request.send(JSON.stringify(data));
+var response1 = "";
+ // Receive Response 
+ request.onload = function() { 
+     if (this.status === 200) { 
+         var response = JSON.parse(this.responseText); 
+         response1 = response.choices[0].text;
+
+         console.log(response.choices[0].text); // Prints the response from GPT3 
+     } else { 
+         response1 = "Something Went wrong";
+         console.error('Error:', this.statusText); // Prints error message if request fails  
+     }  
+     addMessage( response1, "OPENAI" );
+     $( "div" ).remove( "#TypeThought" );
+ };
+}
+
+
+</script>
+
+
+<style>
+  .bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  }
+
+  @media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+  }
+
+  .b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  }
+
+  .bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+  }
+
+  .nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  }
+
+  #messagelist{
+  height: 450px;
+  width: 95%;
+  overflow-y:auto;
+  }
+
+  @charset "UTF-8";
+  .text-center {
+  text-align: center;
+  }
+
+  .cf {
+  *zoom: 1;
+  }
+  .cf:before, .cf:after {
+  content: " ";
+  display: table;
+  }
+  .cf:after {
+  clear: both;
+  }
+
+  .wrapper .speechbubble {
+  background-color: #26272b;
+  color: #9fa2a7;
+  font-size: 0.8em;
+  line-height: 1.75;
+  padding: 15px 25px;
+  margin-bottom: 75px;
+  cursor: default;
+  }
+  .wrapper .speechbubble:nth-child(2n) {
+  border-left: 5px solid;
+  }
+  .wrapper .speechbubble:nth-child(2n):after {
+  content: "";
+  margin-top: -30px;
+  padding-top: 0px;
+  position: relative;
+  bottom: -45px;
+  left: 20px;
+  border-width: 30px 0 0 30px;
+  border-style: solid;
+  border-color: #26272b transparent;
+  display: block;
+  width: 0;
+  }
+  .wrapper .speechbubble:nth-child(2n+1) {
+  border-right: 5px solid;
+  }
+  .wrapper .speechbubble:nth-child(2n+1):after {
+  content: "";
+  margin-top: -30px;
+  padding-top: 0px;
+  position: relative;
+  bottom: -45px;
+  left: 350px;
+  border-width: 30px 30px 0 0;
+  border-style: solid;
+  border-color: #26272b transparent;
+  display: block;
+  width: 0;
+  }
+  .wrapper .speechbubble:nth-child(4n+1) {
+  border-color: #56b273;
+  }
+  .wrapper .speechbubble:nth-child(4n+2) {
+  border-color: #01ad9b;
+  }
+  .wrapper .speechbubble:nth-child(4n+3) {
+  border-color: #b388dd;
+  }
+  .wrapper .speechbubble:nth-child(4n+4) {
+  border-color: #ff8750;
+  }
+  .wrapper .speechbubble p:before {
+  content: "“";
+  font-family: Georgia;
+  font-size: 40px;
+  line-height: 0;
+  display: inline-block;
+  display: -webkit-inline-box;
+  }
+  .wrapper .speechbubble .username {
+  display: inline;
+  font-style: italic;
+  float: right;
+  }
+  .wrapper .speechbubble .username:before {
+  content: "- ";
+  }
+
+
+
+
+
+
+  .typing {
+  align-items: center;
+  display: flex;
+  height: 17px;
+}
+.typing .dot {
+  animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+  background-color: #6CAD96 ; //rgba(20,105,69,.7);
+  border-radius: 50%;
+  height: 7px;
+  margin-right: 4px;
+  vertical-align: middle;
+  width: 7px;
+  display: inline-block;
+}
+.typing .dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+.typing .dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+.typing .dot:nth-child(3) {
+  animation-delay: 400ms;
+}
+.typing .dot:nth-child(4) {
+  animation-delay: 500ms;
+}
+
+.typing .dot:last-child {
+  margin-right: 0;
+}
+
+@keyframes mercuryTypingAnimation {
+  0% {
+    transform: translateY(0px);
+    background-color:#6CAD96; // rgba(20,105,69,.7);
+  }
+  28% {
+    transform: translateY(-7px);
+    background-color:#9ECAB9; //rgba(20,105,69,.4);
+  }
+  44% {
+    transform: translateY(0px);
+    background-color: #B5D9CB; //rgba(20,105,69,.2);
+  }
+
+}
+</style>
+
+    
+</head>
+<body>
+    
+<main>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="favicon.ico">
+        <span class="fs-4">Falcons.ai/GPT JQuery Example</span>
+      </a>
+    </header>
+<div class="row">
+    <div class="p-5 mb-4 text-bg-dark rounded-3">
+      <div id="messagelist" class="container-fluid py-5">
+
+      <div class='wrapper'>
+      <!------Here is where the message content will render------->
+      </div>
+</div>
+<div class="row>"      
+      <!----- User input ---->
+      <div id="userinputdiv" class="input-group mb-3">
+        <input type="text" id="userquery" class="form-control" placeholder="Ask ChatGPT something....">
+        <div class="input-group-append">
+          <button id="btnSend" class="btn btn-outline-primary " type="button"><img src="assets/2343805.png"></button>
+        </div>
+      </div>
+      <!------ close user input ---->
+    </div>
+</div>
+
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      Falcons.ai Copyright &copy; 2023
+    </footer>
+  </div>
+</main>
+
+
+    
+  </body>
+</html>

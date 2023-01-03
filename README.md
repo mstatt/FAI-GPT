@@ -1,6 +1,6 @@
 
 
-# Falcons.ai Chat GPT interface.
+# Falcons.ai HTML/JAVASCRIPT/CSS Chat GPT interface.
 
 <div id="top"></div>
 <div align="center">
@@ -25,9 +25,20 @@
 CHATGPT Interface</h3>
 
   <p align="center">
-    A simple codebase to run and test the new ChatGPT by OPENAI
+    A simple html Javascript/CSS codebase to run Davinci-003 model of GPT3 in a chat UI (aka ChatGPT)
+    I have included the Bootsrtrap and Jquery libraries
     <br />
-    Much thanks to JavascriptMastery for the base files.
+
+  </p>
+
+
+    <h3 align="center">
+How To</h3>
+
+  <p align="center">
+    All you need to do is get an API key from OPENAI, plug it into the sendRequest() function on the index,html page.
+    Save the file and open it in a browser. ALL DONE.
+    <br />
 
   </p>
 </div>
