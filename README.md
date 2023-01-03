@@ -19,9 +19,9 @@
   <a href="https://github.com/mstatt/FAI-GPT">
     <img src="assets/falcons-logo2.png" alt="Logo" >
   </a>
+</div>
 
-
-###CHATGPT Interface
+## CHATGPT Interface
 
   <p align="center">
     A simple html Javascript/CSS codebase to run Davinci-003 model of GPT3 in a chat UI (aka ChatGPT)
@@ -32,13 +32,15 @@
 
 
 
-###How To
+## How To
 
   <p align="center">
-    All you need to do is get an API key from OPENAI, plug it into the sendRequest() function on the index,html page.
-    Save the file and open it in a browser. ALL DONE.
+    All you need to do is the following:
     <br />
-
+1. Get an API key from OPENAI
+2. Plug it into the sendRequest() function on the index.html page
+3. Save the file and open it in a browser.
+4. ALL DONE
   </p>
 
 
