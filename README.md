@@ -3,11 +3,11 @@
 <div id="top"></div>
 <div align="center">
   
-![](https://img.shields.io/badge/Language-Python-blue)
-![](https://img.shields.io/badge/Platform-Streamlit-red)
+![](https://img.shields.io/badge/Language-HTML-green)
+![](https://img.shields.io/badge/Language-CSS-blue)
+![](https://img.shields.io/badge/Language-JQUERY-red)
 ![](https://img.shields.io/badge/License-MIT-blue)
-![](https://img.shields.io/github/issues/mstatt/Emotion_Detection)
-![](https://img.shields.io/github/forks/mstatt/Emotion_Detection)
+
   
 </div>
 
@@ -37,11 +37,13 @@
   <p align="center">
     All you need to do is the following:
     <br />
-1. Get an API key from OPENAI
-2. Plug it into the sendRequest() function on the index.html page
-3. Save the file and open it in a browser.
-4. ALL DONE
+    <ol>
+<li> Get an API key from OPENAI</li>
+<li> Plug it into the sendRequest() function on the index.html page.</li>
+<li> Save the file and open it in a browser.</li>
+<li> ALL DONE</li>
   </p>
+</ol>
 
 
 
