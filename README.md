@@ -62,6 +62,18 @@ UI in Browser            |  UI in Browser
 ![Cscreenshot] |  ![Dscreenshot]  
 
 
+
+<!-- CONTACT -->
+## Contact
+
+Project Link: [https://github.com/mstatt/FAI-GPT]
+
+Project Demo: [https://youtu.be/YPX-WF-zCKg]
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 <!-- LICENSE -->
 ## License
 
