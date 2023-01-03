@@ -1,15 +1,14 @@
-
-
-# Falcons.ai HTML/JAVASCRIPT/CSS Chat GPT interface.
+# Falcons.AI html/javascript/css GPT3 interface
 
 <div id="top"></div>
 <div align="center">
-
+  
+![](https://img.shields.io/badge/Language-Python-blue)
+![](https://img.shields.io/badge/Platform-Streamlit-red)
 ![](https://img.shields.io/badge/License-MIT-blue)
-![](https://img.shields.io/github/issues/mstatt/jetson-interface_installer)
-![](https://img.shields.io/github/forks/mstatt/jetson-interface_installer)
-![](https://img.shields.io/badge/BASH-LINUX-brightgreen)
- 
+![](https://img.shields.io/github/issues/mstatt/Emotion_Detection)
+![](https://img.shields.io/github/forks/mstatt/Emotion_Detection)
+  
 </div>
 
 
@@ -17,12 +16,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/mstatt/chatGPT">
+  <a href="https://github.com/mstatt/FAI-GPT">
     <img src="assets/falcons-logo2.png" alt="Logo" >
   </a>
 
-  <h3 align="center">
-CHATGPT Interface</h3>
+
+###CHATGPT Interface
 
   <p align="center">
     A simple html Javascript/CSS codebase to run Davinci-003 model of GPT3 in a chat UI (aka ChatGPT)
@@ -32,8 +31,8 @@ CHATGPT Interface</h3>
   </p>
 
 
-<h3 align="center">
-How To</h3>
+
+###How To
 
   <p align="center">
     All you need to do is get an API key from OPENAI, plug it into the sendRequest() function on the index,html page.
@@ -41,4 +40,29 @@ How To</h3>
     <br />
 
   </p>
-</div>
+
+
+
+<!-- OUTPUT -->
+## Output
+
+In the images below you can see still shots of the application runnning in your local browser.
+
+UI in Browser            |  UI in Browser
+:-------------------------:|:-------------------------:
+![Ascreenshot] |  ![Bscreenshot]  
+
+
+UI in Browser            |  UI in Browser
+:-------------------------:|:-------------------------:
+![Cscreenshot] |  ![Dscreenshot]  
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[license-shield]: assets/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6f74686e65696c647265772f426573742d524541444d452d54656d706c6174652e7376673f7374796c653d666f722d7468652d6261646765.svg?style=for-the-badge
+[license-url]: https://github.com/mstatt/Emotion_Detection/blob/main/LICENSE.txt
+[demo-url]: https://www.youtube.com/watch?v=AWB2cEKcME0
+
+[Ascreenshot]: assets/asc.png
+[Bscreenshot]: assets/bsc.png
+[Cscreenshot]: assets/csc.png
+[Dscreenshot]: assets/dsc.png
