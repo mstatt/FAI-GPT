@@ -32,7 +32,7 @@ CHATGPT Interface</h3>
   </p>
 
 
-    <h3 align="center">
+<h3 align="center">
 How To</h3>
 
   <p align="center">
