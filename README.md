@@ -8,7 +8,7 @@
 ![](https://img.shields.io/badge/Language-HTML-green)
 ![](https://img.shields.io/badge/Language-CSS-blue)
 ![](https://img.shields.io/badge/Language-JQUERY-red)
-![](https://img.shields.io/badge/License-MIT-blue)
+
 
   
 </div>
